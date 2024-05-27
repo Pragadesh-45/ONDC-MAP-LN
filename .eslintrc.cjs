@@ -14,7 +14,7 @@ module.exports = {
   },
   // ignore the node_modules folder and all the root-level .ts, .js and .cjs files because the custom eslint parser
 
-  overrides: [
+overrides: [
     {
       files: ["*.svelte"],
       // files: ["./demo/**/*.{ts,js,cjs,svelte}", "./src/**/*.{ts,js,cjs,svelte}"],
