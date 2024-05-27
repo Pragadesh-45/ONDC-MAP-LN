@@ -12,21 +12,24 @@ module.exports = {
     es6: true,
     browser: true,
   },
+  // ignore the node_modules folder and all the root-level .ts, .js and .cjs files because the custom eslint parser
+
   overrides: [
     {
       files: ["*.svelte"],
+      // files: ["./demo/**/*.{ts,js,cjs,svelte}", "./src/**/*.{ts,js,cjs,svelte}"],
       parser: "svelte-eslint-parser",
       // Parse the `<script>` in `.svelte` as TypeScript by adding the following configuration.
       parserOptions: {
         parser: "@typescript-eslint/parser",
       },
+      rules: {
+        "@typescript-eslint/no-unused-vars": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "svelte/valid-compile": "off",
+      },
     },
   ],
-  plugins: ["@typescript-eslint"],
-  rules: {
-    "svelte/no-at-html-tags": "off",
-  },
-  // ignore the node_modules folder and all the root-level .ts, .js and .cjs files because the custom eslint parser
   // doesn't know how to work with them for some reason and the stats.html file
   ignorePatterns: ["node_modules", "/*.ts", "/*.js", "/*.cjs", "/stats.html"],
 };
